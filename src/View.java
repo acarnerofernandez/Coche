@@ -160,14 +160,23 @@ public class View {
     /**
      * Imprime en pantalla la confirmación de que el coche avanzó y
      * muestra la cantidad total de kilómetros acumulados.
-     * * @param matricula La matrícula del coche que se ha movido.
-     * @param kmTotales Los kilómetros totales que lleva acumulados.
+
+     * @param completado Si se logro el viaje o no
      */
-    public void confirmarAvanzar(String matricula, double kmTotales) {
-        System.out.println("[VISTA] ¡El coche " + matricula + " ha avanzado con éxito!");
-        System.out.println("[VISTA] Kilómetros totales recorridos: " + kmTotales + " km.");
+    public void confirmarAvanzar(boolean completado) {
+
+        if (completado) {
+            System.out.println("[VISTA]Gasolina suficiente.");
+        } else {
+            System.out.println("[VISTA] Error sin gasolina .");
+        }
     }
 
+    /**
+     * Imprime Cuanta gasolina tiene
+     * Si no se pudo añadir da error
+     * @param Verdadero
+     */
 
     public void confirmarGasolina(boolean Verdadero) {
         if (Verdadero) {

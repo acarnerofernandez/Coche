@@ -77,6 +77,12 @@ public class Model {
         return coche.kilometrosRecorridos;
     }
 
+    /**
+     *
+     * @param matricula
+     * @param metros
+     * @return verdadero o falso dependiendo de si se puede hacer el viaje o no
+     */
 
     public boolean GasolinaGastada(String matricula, double metros){
 
@@ -99,6 +105,14 @@ public class Model {
         }
 
     }
+
+    /**
+     *
+     * Añade gasolina y revisi si se puede cambiar o si entra toda en el tanque de 120l en caso de error vuelve a la gasolina anterior
+     * @param matricula
+     * @param litros
+     * @return
+     */
 
     public boolean GasolinaSumar (String matricula, int litros) {
 

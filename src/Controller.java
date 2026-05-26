@@ -79,11 +79,15 @@ public class Controller {
      * @param metros Los metros que se va a desplazar.
      */
     public void procesarAvanzar(String matricula, int metros) {
-        double kmTotales = miModel.avanzarCoche(matricula, metros);
-        miModel.GasolinaGastada(matricula, metros);
-        miView.confirmarAvanzar(matricula, kmTotales);
+        boolean hecho = miModel.GasolinaGastada(matricula, metros);
+        miView.confirmarAvanzar(hecho);
     }
 
+    /**
+     * Procesa cuanta asolina se añade y se la manda al model luego lo devuelve en formato boolean
+     * @param matricula
+     * @param litros
+     */
 
     public void ProcesarGasolinaAñadida(String matricula,int litros){
         boolean Verdadero = miModel.GasolinaSumar(matricula, litros);
@@ -92,4 +96,10 @@ public class Controller {
 
 
     }
+
+
+
+
+
+
 }
