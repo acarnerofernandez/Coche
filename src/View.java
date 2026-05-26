@@ -36,7 +36,8 @@ public class View {
             System.out.println("3. Modificar velocidad");
             System.out.println("4. Ver velocidad");
             System.out.println("5. Avanzar coche ");
-            System.out.println("6. Salir");
+            System.out.println("6. Añadir gasolina ");
+            System.out.println("0. Salir");
             System.out.print("Elija una opción: ");
 
             int opcion = teclado.nextInt();
@@ -70,7 +71,7 @@ public class View {
                     controlador.procesarVerVelocidad(matCons);
                     break;
 
-                case 5: // NUEVO CASO: Captura los metros para avanzar
+                case 5:
                     System.out.print("Introduce la matrícula: ");
                     String matAvanzar = teclado.next();
                     System.out.print("¿Cuántos metros avanza?: ");
@@ -79,6 +80,16 @@ public class View {
                     break;
 
                 case 6:
+
+                    System.out.print("Introduce la matrícula: ");
+                    String matricula = teclado.next();
+                    System.out.print("¿Cuántos litros añades: ");
+                    int litros = teclado.nextInt();
+                    controlador.ProcesarGasolinaAñadida(matricula, litros);
+
+                    break;
+
+                case 0:
                     continuar = false;
                     System.out.println("Saliendo de la aplicación...");
                     break;
@@ -108,7 +119,7 @@ public class View {
      */
     public void muestraCoche(Coche c) {
         if (c != null) {
-            System.out.println("[VISTA] Datos del coche -> Modelo: " + c.modelo + " | Matrícula: " + c.matricula + " | Velocidad: " + c.velocidad + "km/hr" + " | Distancia recorrida " + c.kilometrosRecorridos + "km");
+            System.out.println("[VISTA] Datos del coche -> Modelo: " + c.modelo + " | Matrícula: " + c.matricula + " | Velocidad: " + c.velocidad + "km/hr" + " | Distancia recorrida " + c.kilometrosRecorridos + "km" + " | Gasolina " + c.TanqueGasolina + "L ");
         } else {
             System.out.println("[VISTA] El coche solicitado no existe en el sistema.");
         }
@@ -147,7 +158,7 @@ public class View {
     }
 
     /**
-     * NUEVO: Imprime en pantalla la confirmación de que el coche avanzó y
+     * Imprime en pantalla la confirmación de que el coche avanzó y
      * muestra la cantidad total de kilómetros acumulados.
      * * @param matricula La matrícula del coche que se ha movido.
      * @param kmTotales Los kilómetros totales que lleva acumulados.
@@ -156,4 +167,15 @@ public class View {
         System.out.println("[VISTA] ¡El coche " + matricula + " ha avanzado con éxito!");
         System.out.println("[VISTA] Kilómetros totales recorridos: " + kmTotales + " km.");
     }
+
+
+    public void confirmarGasolina(boolean Verdadero) {
+        if (Verdadero) {
+            System.out.println("[VISTA]Gasolina añdadida.");
+        } else {
+            System.out.println("[VISTA] Error al agregar gasolina.");
+        }
+    }
+
+
 }

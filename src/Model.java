@@ -55,6 +55,7 @@ public class Model {
      * @return Los kilómetros por hora actuales de ese coche.
      */
     public int getVelocidad(String matricula) {
+
         return getCoche(matricula).velocidad;
     }
 
@@ -67,12 +68,61 @@ public class Model {
      */
     public double avanzarCoche(String matricula, int metros) {
         Coche coche = getCoche(matricula);
-        // Pasamos los metros a kilómetros dividiendo entre 1000.0
+
         double kmNuevos = metros / 1000.0;
 
-        // Sumamos los nuevos kilómetros al total del coche
+
         coche.kilometrosRecorridos += kmNuevos;
 
         return coche.kilometrosRecorridos;
     }
+
+
+    public boolean GasolinaGastada(String matricula, double metros){
+
+        Coche coche = getCoche(matricula);
+
+        double velocidad = coche.velocidad;
+
+        double kmNuevos = metros / 1000.0;
+
+        double Consumo = 1 * kmNuevos;
+
+        double ConsumoTotal = Consumo * (velocidad * 0.10);
+
+        if (coche.TanqueGasolina - ConsumoTotal < 0) {
+
+            return false;
+        }else {
+            coche.TanqueGasolina = coche.TanqueGasolina - ConsumoTotal;
+            return true;
+        }
+
+    }
+
+    public boolean GasolinaSumar (String matricula, int litros) {
+
+        Coche coche = getCoche(matricula);
+
+        double Gasolina = coche.TanqueGasolina;
+        double actual = Gasolina + litros;
+
+        if(actual > 120 && Gasolina < 0){
+          double GasolinaFinal = Gasolina;
+
+            coche.TanqueGasolina = GasolinaFinal;
+
+            return false;
+        }  else {
+
+            double GasolinaFinal = actual;
+            coche.TanqueGasolina = GasolinaFinal;
+            return true;
+        }
+
+
+
+    }
+
+
 }

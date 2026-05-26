@@ -72,13 +72,24 @@ public class Controller {
     }
 
     /**
-     * NUEVO: Gestiona la acción de avanzar: le ordena en silencio al modelo que
+     * Gestiona la acción de avanzar: le ordena en silencio al modelo que
      * calcule los nuevos kilómetros y le pasa el resultado a la vista para que lo pinte.
+     * Le pasa los metros recorridos a la gasolinaGastada
      * * @param matricula La matrícula del coche que avanza.
      * @param metros Los metros que se va a desplazar.
      */
     public void procesarAvanzar(String matricula, int metros) {
         double kmTotales = miModel.avanzarCoche(matricula, metros);
+        miModel.GasolinaGastada(matricula, metros);
         miView.confirmarAvanzar(matricula, kmTotales);
+    }
+
+
+    public void ProcesarGasolinaAñadida(String matricula,int litros){
+        boolean Verdadero = miModel.GasolinaSumar(matricula, litros);
+
+        miView.confirmarGasolina(Verdadero);
+
+
     }
 }

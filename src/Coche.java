@@ -14,8 +14,11 @@ public class Coche {
     /** La velocidad actual del coche en kilómetros por hora. */
     Integer velocidad;
 
-    /** NUEVO: El contador que guarda los kilómetros totales que ha recorrido el coche. */
+    /** El contador que guarda los kilómetros totales que ha recorrido el coche. */
     double kilometrosRecorridos;
+
+
+    double TanqueGasolina;
 
     /**
      * Constructor para crear un coche desde cero.
@@ -29,6 +32,6 @@ public class Coche {
         this.matricula = matricula;
         this.velocidad = 0;
         this.kilometrosRecorridos = 0.0;
-
+        this.TanqueGasolina = 0.0;
     }
 }
